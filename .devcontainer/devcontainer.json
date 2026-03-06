@@ -1,0 +1,13 @@
+{
+  "name": "MLOps Movie Prediction",
+  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  }
+}
