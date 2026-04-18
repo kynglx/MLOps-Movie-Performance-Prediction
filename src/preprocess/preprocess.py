@@ -24,7 +24,6 @@ def preprocess_data(file_path):
 
     df = pd.DataFrame(movies)
 
-    # pilih kolom
     df = df[[
         "id",
         "title",
@@ -35,33 +34,39 @@ def preprocess_data(file_path):
         "source"
     ]]
 
-    # ubah tipe tanggal
     df["release_date"] = pd.to_datetime(df["release_date"], errors="coerce")
 
-    # feature engineering
     df["release_year"] = df["release_date"].dt.year
     df["is_recent"] = df["release_year"] >= 2020
     df["popularity_log"] = np.log1p(df["popularity"])
 
-    # encode source jadi fitur
     df["is_popular"] = df["source"] == "popular"
 
-    # hapus duplikat (film bisa muncul di 2 endpoint)
     df = df.drop_duplicates(subset="id")
-
-    # handle missing values
     df = df.dropna(subset=["title", "popularity", "vote_average"])
 
     return df
 
 def save_processed_data(df):
-    os.makedirs("data/processed", exist_ok=True)
+    os.makedirs("data", exist_ok=True)
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"data/processed/movies_clean_{timestamp}.csv"
+    file_path = "data/processed/dataset.csv"
 
-    df.to_csv(filename, index=False)
-    print(f"Data bersih disimpan di: {filename}")
+    # kalau file sudah ada → gabung + drop duplicate
+    if os.path.exists(file_path):
+        existing_df = pd.read_csv(file_path)
+
+        combined_df = pd.concat([existing_df, df], ignore_index=True)
+
+        # agar tidak double antar ingestion
+        combined_df = combined_df.drop_duplicates(subset="id")
+
+        combined_df.to_csv(file_path, index=False)
+        print("Dataset berhasil diupdate (append + deduplicate).")
+
+    else:
+        df.to_csv(file_path, index=False)
+        print("Dataset baru dibuat.")
 
 if __name__ == "__main__":
     latest_file = get_latest_file()
