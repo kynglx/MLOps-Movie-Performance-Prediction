@@ -44,3 +44,88 @@ Contoh branch:
 feat/initial-eda
 
 Branch ini digunakan untuk melakukan eksplorasi data awal sebelum digabungkan ke branch `main`.
+
+## 📥 Data Ingestion
+
+Script `ingest_data.py` digunakan untuk mengambil data film dari TMDB API.
+
+Sumber data:
+
+* `now_playing` → film yang sedang tayang
+* `popular` → film yang sedang populer
+
+Setiap kali script dijalankan:
+
+* Data terbaru akan diambil dari API
+* Data disimpan ke folder `data/raw/`
+* Nama file menggunakan timestamp (tidak overwrite)
+
+### ▶️ Cara Menjalankan
+
+```bash
+python src/ingest_data.py
+```
+
+### 📂 Output
+
+Contoh file:
+
+```
+data/raw/movies_20260405_101530.json
+```
+
+---
+
+## 🧹 Data Preprocessing
+
+Script `preprocess.py` digunakan untuk membersihkan dan menyiapkan data.
+
+Proses yang dilakukan:
+
+* Mengambil file terbaru dari folder `data/raw/`
+* Memilih kolom penting
+* Mengubah format tanggal
+* Menambahkan fitur baru
+* Menghapus data duplikat dan kosong
+
+### ▶️ Cara Menjalankan
+
+```bash
+python src/preprocess.py
+```
+
+### 📂 Output
+
+Contoh file:
+
+```
+data/processed/movies_clean_20260405_101600.csv
+```
+
+---
+
+## 🔁 Continual Learning Concept
+
+Pipeline ini mendukung konsep continual learning karena:
+
+* Data disimpan menggunakan timestamp
+* Setiap proses menghasilkan file baru
+* Data lama tidak dihapus
+* Data dapat dikumpulkan secara bertahap
+
+---
+
+## ⚙️ Teknologi yang Digunakan
+
+* Python
+* Requests
+* Pandas
+* NumPy
+
+---
+
+## 📌 Catatan
+
+* Pastikan API Key TMDB sudah dimasukkan di `ingest_data.py`
+* Script dapat dijalankan berulang kali untuk mengambil data terbaru
+* Dokumentasi dan kode telah diperbarui sesuai kebutuhan pipeline
