@@ -129,3 +129,86 @@ Pipeline ini mendukung konsep continual learning karena:
 * Pastikan API Key TMDB sudah dimasukkan di `ingest_data.py`
 * Script dapat dijalankan berulang kali untuk mengambil data terbaru
 * Dokumentasi dan kode telah diperbarui sesuai kebutuhan pipeline
+
+
+## 📦 Data Versioning dengan DVC
+
+Pada proyek ini digunakan DVC (Data Version Control) untuk mengelola versi dataset tanpa membebani Git dengan file berukuran besar. DVC memungkinkan pelacakan perubahan data melalui file metadata (.dvc), sehingga setiap perubahan dataset dapat direkam dengan jelas.
+
+---
+
+### 🚀 Inisialisasi DVC
+
+Langkah pertama adalah menginisialisasi DVC pada repository:
+
+```bash
+dvc init
+git add .dvc .gitignore
+git commit -m "init DVC"
+```
+
+---
+
+### 📥 Tracking Dataset Awal
+
+Dataset hasil preprocessing (`dataset.csv`) mulai dilacak menggunakan DVC:
+
+```bash
+dvc add data/processed/dataset.csv
+git add data/processed/dataset.csv.dvc .gitignore
+git commit -m "track initial dataset"
+```
+
+File `.dvc` yang dihasilkan berisi metadata seperti hash dan ukuran file, sedangkan file dataset asli tidak disimpan di Git.
+
+---
+
+### 🔄 Simulasi Continual Learning
+
+Untuk mensimulasikan penambahan data baru:
+
+1. Jalankan kembali pipeline:
+
+```bash
+python src/ingest_data.py
+python src/preprocess.py
+```
+
+2. Dataset akan diperbarui (ditambahkan data baru).
+
+---
+
+### 🆕 Versioning Dataset Baru
+
+Setelah dataset berubah, lakukan tracking ulang:
+
+```bash
+dvc add data/processed/dataset.csv
+git add data/processed/dataset.csv.dvc
+git commit -m "update dataset version"
+```
+
+Perubahan isi dataset akan menghasilkan hash baru pada file `.dvc`, yang menandakan adanya versi data baru.
+
+---
+
+### 🔍 Audit Perubahan Data
+
+Untuk melihat perbedaan antar versi dataset:
+
+```bash
+dvc diff HEAD~1 HEAD
+```
+
+Contoh output:
+
+```
+Modified:
+    data/processed/dataset.csv
+
+files summary: 1 modified
+```
+
+Hal ini menunjukkan bahwa dataset telah mengalami perubahan antara dua versi yang berbeda.
+
+---
