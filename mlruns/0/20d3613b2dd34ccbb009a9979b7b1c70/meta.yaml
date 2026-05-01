@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/20d3613b2dd34ccbb009a9979b7b1c70/artifacts
+end_time: 1777649055142
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 20d3613b2dd34ccbb009a9979b7b1c70
+run_name: funny-perch-107
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777649049636
+status: 3
+tags: []
+user_id: asus
