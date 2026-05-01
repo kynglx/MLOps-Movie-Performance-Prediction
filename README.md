@@ -212,3 +212,46 @@ files summary: 1 modified
 Hal ini menunjukkan bahwa dataset telah mengalami perubahan antara dua versi yang berbeda.
 
 ---
+
+### MLflow
+Model dilatih menggunakan Random Forest Regressor dengan beberapa percobaan parameter.  
+Setiap eksperimen dicatat menggunakan MLflow (parameter, RMSE, dan model).
+
+Model terbaik:
+- n_estimators = 90  
+- max_depth = 5  
+- RMSE = 105.65  
+
+Lebih baik dibandingkan hasil sebelumnya (RMSE = 109.89).
+
+---
+
+### Model Registry
+Model terbaik didaftarkan ke MLflow Model Registry dengan nama:
+
+movie-popularity-model
+
+Setiap training menghasilkan versi model (v1, v2, dst).  
+Model dengan RMSE terendah dipilih dan dipromosikan ke **Production**.
+
+---
+
+### DVC Metadata
+Metadata model disimpan dalam file:
+
+model_info.yaml
+
+Contoh:
+model_name: movie-popularity-model  
+version: 8  
+stage: Production  
+rmse: 105.65  
+
+---
+
+### Inference
+Model Production dapat digunakan untuk prediksi dengan MLflow:
+
+model = mlflow.pyfunc.load_model("models:/movie-popularity-model/Production")
+
+Model berhasil digunakan untuk prediksi sehingga siap digunakan.

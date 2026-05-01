@@ -52,11 +52,11 @@ def train_model(n_estimators, max_depth):
 
         mlflow.log_metric("rmse", rmse)
 
-        mlflow.sklearn.log_model(model, "model")
-
+        mlflow.sklearn.log_model(model, "model", registered_model_name="movie-popularity-model")
+        
         print(f"Run selesai | n_estimators={n_estimators}, max_depth={max_depth}, RMSE={rmse}")
 
 if __name__ == "__main__":
-    train_model(100, 5)
-    train_model(200, 5)
-    train_model(200, 10)
+    train_model(80, 10)
+    train_model(80, 5)
+    train_model(70, 10)
