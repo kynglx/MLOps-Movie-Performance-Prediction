@@ -33,4 +33,4 @@ jobs:
 
       - name: Run Model Training
         run: |
-          python train.py
+          python models/train.py
