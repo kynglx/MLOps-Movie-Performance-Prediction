@@ -28,7 +28,11 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
+RMSE_THRESHOLD = 110
+
+
 def train_model(n_estimators, max_depth):
+
     with mlflow.start_run():
 
         # model
@@ -49,14 +53,50 @@ def train_model(n_estimators, max_depth):
         # logging
         mlflow.log_param("n_estimators", n_estimators)
         mlflow.log_param("max_depth", max_depth)
-
         mlflow.log_metric("rmse", rmse)
 
-        mlflow.sklearn.log_model(model, "model", registered_model_name="movie-popularity-model")
-        
-        print(f"Run selesai | n_estimators={n_estimators}, max_depth={max_depth}, RMSE={rmse}")
+        print(
+            f"Run selesai | "
+            f"n_estimators={n_estimators}, "
+            f"max_depth={max_depth}, "
+            f"RMSE={rmse}"
+        )
+
+        return model, rmse
+
 
 if __name__ == "__main__":
-    train_model(80, 10)
-    train_model(80, 5)
-    train_model(70, 10)
+
+    train_model(90, 5) #retrainning trigger
+
+    best_model = None
+    best_rmse = float("inf")
+
+    for n_estimators, max_depth in experiments:
+
+        model, rmse = train_model(
+            n_estimators,
+            max_depth
+        )
+
+        if rmse < best_rmse:
+            best_rmse = rmse
+            best_model = model
+
+    print(f"Best RMSE: {best_rmse}")
+
+    # validation threshold
+    if best_rmse <= RMSE_THRESHOLD:
+
+        print("✅ Model lolos validasi")
+
+        mlflow.sklearn.log_model(
+            best_model,
+            "model",
+            registered_model_name="movie-popularity-model"
+        )
+
+    else:
+        raise Exception(
+            "❌ Model gagal validasi threshold"
+        )
