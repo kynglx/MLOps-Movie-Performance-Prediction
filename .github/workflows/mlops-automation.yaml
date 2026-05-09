@@ -8,7 +8,7 @@ on:
 
 jobs:
   testing:
-    name: Stage 1 - Automated Testing
+    name: Stage 1 - Code Automated Testing
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         run: pytest tests/
 
   training:
-    name: Stage 2 - Automated Training
+    name: Stage 2 - Movie Model Training
     runs-on: ubuntu-latest
     needs: testing
 
@@ -47,7 +47,7 @@ jobs:
         run: python models/train.py
 
   evaluation:
-    name: Stage 3 - Model Evaluation & Validation
+    name: Stage 3 - Model Evaluation
     runs-on: ubuntu-latest
     needs: training
 
@@ -60,13 +60,20 @@ jobs:
           echo "Model validation passed"
 
   registry:
-    name: Stage 4 - Auto Registry Update
+    name: Stage 4 - Model Registry Update
     runs-on: ubuntu-latest
     needs: evaluation
 
-    steps:
-      - uses: actions/checkout@v4
+  steps:
+    - uses: actions/checkout@v4
 
-      - name: Register Model
-        run: |
-          echo "Registering model to staging"
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Register Model to MLflow Staging
+      run: python register_model.py
