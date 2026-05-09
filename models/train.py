@@ -67,7 +67,9 @@ def train_model(n_estimators, max_depth):
 
 if __name__ == "__main__":
 
-    train_model(90, 5) #retrainning trigger
+    experiments = [
+        (90, 10)
+    ]
 
     best_model = None
     best_rmse = float("inf")
