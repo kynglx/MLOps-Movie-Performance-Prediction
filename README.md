@@ -255,3 +255,5 @@ Model Production dapat digunakan untuk prediksi dengan MLflow:
 model = mlflow.pyfunc.load_model("models:/movie-popularity-model/Production")
 
 Model berhasil digunakan untuk prediksi sehingga siap digunakan.
+
+Test GitHub Actions trigger
