@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/67b9c2b4a6834d8aa8160798cb9e7f4a/artifacts
+end_time: 1777652907939
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 67b9c2b4a6834d8aa8160798cb9e7f4a
+run_name: wistful-croc-813
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777652902216
+status: 3
+tags: []
+user_id: asus

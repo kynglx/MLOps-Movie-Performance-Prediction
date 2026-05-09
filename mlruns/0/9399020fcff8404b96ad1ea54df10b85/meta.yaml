@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/9399020fcff8404b96ad1ea54df10b85/artifacts
+end_time: 1777653498518
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9399020fcff8404b96ad1ea54df10b85
+run_name: valuable-doe-532
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777653492925
+status: 3
+tags: []
+user_id: asus

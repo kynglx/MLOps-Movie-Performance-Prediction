@@ -1,0 +1,16 @@
+creation_timestamp: 1777652885018
+current_stage: None
+deployment_job_state: null
+description: null
+last_updated_timestamp: 1777652885018
+model_id: m-a859c33010aa4420b8a50b1f2e08c46a
+name: movie-popularity-model
+run_id: cbb96c06875145cab5004558ca5cc354
+run_link: null
+source: models:/m-a859c33010aa4420b8a50b1f2e08c46a
+status: READY
+status_message: null
+storage_location: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/models/m-a859c33010aa4420b8a50b1f2e08c46a/artifacts
+user_id: null
+version: 5
+workspace: default

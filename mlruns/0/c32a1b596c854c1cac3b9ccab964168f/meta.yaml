@@ -1,8 +1,9 @@
 artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/c32a1b596c854c1cac3b9ccab964168f/artifacts
+deleted_time: 1777653087944
 end_time: 1777649059594
 entry_point_name: ''
 experiment_id: '0'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: c32a1b596c854c1cac3b9ccab964168f
 run_name: industrious-dove-563
 source_name: ''

@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/d0a20e7cab7b418293e8a33716e05dc3/artifacts
+end_time: 1777653507734
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d0a20e7cab7b418293e8a33716e05dc3
+run_name: blushing-shark-436
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777653503164
+status: 3
+tags: []
+user_id: asus

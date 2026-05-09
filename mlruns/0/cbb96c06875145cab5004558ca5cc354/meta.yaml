@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/cbb96c06875145cab5004558ca5cc354/artifacts
+deleted_time: 1777653087942
+end_time: 1777652885083
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: cbb96c06875145cab5004558ca5cc354
+run_name: gaudy-shrimp-336
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777652880476
+status: 3
+tags: []
+user_id: asus

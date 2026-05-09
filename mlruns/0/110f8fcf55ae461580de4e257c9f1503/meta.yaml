@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/110f8fcf55ae461580de4e257c9f1503/artifacts
+end_time: 1777652917291
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 110f8fcf55ae461580de4e257c9f1503
+run_name: suave-ram-36
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777652912651
+status: 3
+tags: []
+user_id: asus

@@ -1,8 +1,9 @@
 artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/54162c1ae66245b3959d30289a5fc607/artifacts
+deleted_time: 1777652969322
 end_time: 1777649064086
 entry_point_name: ''
 experiment_id: '0'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 54162c1ae66245b3959d30289a5fc607
 run_name: dashing-yak-175
 source_name: ''

@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/d8ef5b795ccc4c05a2de5c96a7b2cf71/artifacts
+end_time: 1777652880468
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d8ef5b795ccc4c05a2de5c96a7b2cf71
+run_name: unique-owl-468
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777652875101
+status: 3
+tags: []
+user_id: asus

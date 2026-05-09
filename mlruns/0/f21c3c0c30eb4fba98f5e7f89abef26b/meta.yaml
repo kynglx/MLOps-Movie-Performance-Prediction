@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/f21c3c0c30eb4fba98f5e7f89abef26b/artifacts
+deleted_time: 1777653482158
+end_time: 1777653459084
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: f21c3c0c30eb4fba98f5e7f89abef26b
+run_name: selective-eel-409
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777653454514
+status: 3
+tags: []
+user_id: asus

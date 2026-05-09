@@ -1,0 +1,10 @@
+artifact_location: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/models/m-cf5c8517fa4e436e84a7b0864a79327d/artifacts
+creation_timestamp: 1777652754489
+experiment_id: '0'
+last_updated_timestamp: 1777652758674
+model_id: m-cf5c8517fa4e436e84a7b0864a79327d
+model_type: null
+name: model
+source_run_id: 5345013f24114a1a89da443233995a9e
+status: 2
+status_message: null

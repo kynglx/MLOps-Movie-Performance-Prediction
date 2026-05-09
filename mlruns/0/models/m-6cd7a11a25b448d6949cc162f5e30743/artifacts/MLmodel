@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/models/m-6cd7a11a25b448d6949cc162f5e30743/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.11.1
+model_id: m-6cd7a11a25b448d6949cc162f5e30743
+model_size_bytes: 295723
+model_uuid: m-6cd7a11a25b448d6949cc162f5e30743
+prompts: null
+run_id: 1b94c68800b2460e9b9d9d73c09857f7
+utc_time_created: '2026-05-01 16:37:29.015622'
