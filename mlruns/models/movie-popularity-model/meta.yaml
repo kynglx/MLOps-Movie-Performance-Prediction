@@ -3,6 +3,6 @@ creation_timestamp: 1777652754168
 deployment_job_id: null
 deployment_job_state: null
 description: null
-last_updated_timestamp: 1777654201883
+last_updated_timestamp: 1780845495040
 name: movie-popularity-model
 workspace: default

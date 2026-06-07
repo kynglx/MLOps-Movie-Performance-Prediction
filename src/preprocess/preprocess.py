@@ -25,29 +25,57 @@ def preprocess_data(file_path):
     df = pd.DataFrame(movies)
 
     df = df[[
-        "id",
-        "title",
-        "popularity",
-        "vote_average",
-        "vote_count",
-        "release_date",
-        "source"
+    "id",
+    "title",
+    "popularity",
+    "vote_average",
+    "vote_count",
+    "release_date",
+    "source",
+    "genre_ids",
+    "original_language",
+    "adult"
     ]]
 
-    df["release_date"] = pd.to_datetime(df["release_date"], errors="coerce")
-
+    # Feature engineering
+    df["release_date"] = pd.to_datetime(
+    df["release_date"],
+    errors="coerce"
+)
     df["release_year"] = df["release_date"].dt.year
-    df["is_recent"] = df["release_year"] >= 2020
-    df["popularity_log"] = np.log1p(df["popularity"])
 
-    df["is_popular"] = df["source"] == "popular"
+    df["is_recent"] = (
+        df["release_year"] >= 2020
+    ).astype(int)
+
+    df["popularity_log"] = np.log1p(
+        df["popularity"]
+    )
+
+    df["genre_count"] = df["genre_ids"].apply(len)
+
+    df["is_english"] = (
+        df["original_language"] == "en"
+    ).astype(int)
+
+    df["is_adult"] = (
+        df["adult"]
+    ).astype(int)
+
+    df["is_popular"] = (
+        df["source"] == "popular"
+    ).astype(int)
 
     df = df.drop_duplicates(subset="id")
     df = df.dropna(subset=["title", "popularity", "vote_average"])
 
+    print("Jumlah data sebelum dedup:", len(pd.DataFrame(movies)))
+    print("Jumlah data setelah dedup:", len(df))
+
     return df
 
 def save_processed_data(df):
+    print("Data baru:", len(df))
     os.makedirs("data", exist_ok=True)
 
     file_path = "data/processed/dataset.csv"
@@ -64,9 +92,13 @@ def save_processed_data(df):
         combined_df.to_csv(file_path, index=False)
         print("Dataset berhasil diupdate (append + deduplicate).")
 
+        print("Data setelah merge:", len(combined_df))
+
     else:
         df.to_csv(file_path, index=False)
         print("Dataset baru dibuat.")
+
+    
 
 if __name__ == "__main__":
     latest_file = get_latest_file()

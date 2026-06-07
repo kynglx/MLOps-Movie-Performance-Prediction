@@ -5,6 +5,7 @@ import mlflow.sklearn
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import (mean_squared_error, r2_score)
 from sklearn.metrics import mean_squared_error
 
 mlflow.set_tracking_uri("file:./mlruns")
@@ -18,10 +19,13 @@ X = df[[
     "vote_count",
     "release_year",
     "is_recent",
-    "is_popular"
+    "is_popular",
+    "genre_count",
+    "is_english",
+    "is_adult"
 ]]
 
-y = df["popularity"]
+y = df["popularity_log"]
 
 # split data
 X_train, X_test, y_train, y_test = train_test_split(
@@ -48,18 +52,17 @@ def train_model(n_estimators, max_depth):
         y_pred = model.predict(X_test)
 
         # metric
+        r2 = r2_score(y_test, y_pred)
         rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
         # logging
         mlflow.log_param("n_estimators", n_estimators)
         mlflow.log_param("max_depth", max_depth)
         mlflow.log_metric("rmse", rmse)
+        mlflow.log_metric("r2", r2)
 
         print(
-            f"Run selesai | "
-            f"n_estimators={n_estimators}, "
-            f"max_depth={max_depth}, "
-            f"RMSE={rmse}"
+            f"Run selesai | n_estimators={n_estimators}, max_depth={max_depth}, RMSE={rmse:.2f}, R2={r2:.4f}"
         )
 
         return model, rmse
@@ -68,7 +71,7 @@ def train_model(n_estimators, max_depth):
 if __name__ == "__main__":
 
     experiments = [
-        (90, 10)
+        (200, 30)
     ]
 
     best_model = None

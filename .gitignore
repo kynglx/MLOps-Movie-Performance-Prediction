@@ -206,3 +206,7 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 /model_info.yaml
+
+#data dan mlruns
+data/raw/
+mlruns/

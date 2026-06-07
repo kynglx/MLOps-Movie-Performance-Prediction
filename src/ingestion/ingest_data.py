@@ -7,34 +7,42 @@ API_KEY = "45c99d078a3a1036afd142669c03c5c5"
 BASE_URL = "https://api.themoviedb.org/3/movie"
 
 ENDPOINTS = [
+    "popular",
     "now_playing",
-    "popular"
+    "top_rated",
+    "upcoming"
 ]
 
-def fetch_movies(endpoint):
-    url = f"{BASE_URL}/{endpoint}"
-    params = {
-        "api_key": API_KEY,
-        "language": "en-US",
-        "page": 1
-    }
+def fetch_movies(endpoint, total_pages=6):
+    all_movies = []
 
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    data = response.json()
+    for page in range(1, total_pages + 1):
+        url = f"{BASE_URL}/{endpoint}"
 
-    # tambahin label source
-    for movie in data["results"]:
-        movie["source"] = endpoint
+        params = {
+            "api_key": API_KEY,
+            "language": "en-US",
+            "page": page
+        }
 
-    return data["results"]
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+
+        data = response.json()
+
+        for movie in data["results"]:
+            movie["source"] = endpoint
+
+        all_movies.extend(data["results"])
+
+    return all_movies
 
 def fetch_all_movies():
     all_movies = []
 
     for endpoint in ENDPOINTS:
         print(f"Fetching: {endpoint}")
-        movies = fetch_movies(endpoint)
+        movies = fetch_movies(endpoint, total_pages=5)
         all_movies.extend(movies)
 
     return all_movies
