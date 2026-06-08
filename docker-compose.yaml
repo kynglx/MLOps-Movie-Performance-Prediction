@@ -34,7 +34,16 @@ services:
       - mlflow-server
 
     environment:
-      MLFLOW_TRACKING_URI: http://mlflow-server:5000
+      - MLFLOW_TRACKING_URI=http://mlflow-server:5000
+
+    networks:
+      - movie-network
+
+  movie-model:
+    image: movie-model
+
+    depends_on:
+      - mlflow-server
 
     networks:
       - movie-network
