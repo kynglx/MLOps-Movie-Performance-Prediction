@@ -209,5 +209,6 @@ __marimo__/
 
 #data dan mlruns
 data/raw/
-data/processed/dataset.csvgit add .gitignore
+data/processed/dataset.csv
 mlruns/Miniconda3-latest-Linux-x86_64.sh*
+

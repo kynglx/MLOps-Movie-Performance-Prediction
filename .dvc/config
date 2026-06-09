@@ -1,0 +1,7 @@
+[core]
+    remote = dagshub
+['remote "dagshub"']
+    url = https://dagshub.com/kynglx/MLOps-Movie-Performance-Prediction.dvc
+    auth = basic
+    user = kynglx
+    password = 0176c752711dc5e9924aa628830bc6dcf148615d
