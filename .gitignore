@@ -208,7 +208,5 @@ __marimo__/
 /model_info.yaml
 
 #data dan mlruns
-data/raw/
-data/processed/dataset.csv
 mlruns/Miniconda3-latest-Linux-x86_64.sh*
 
