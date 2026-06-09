@@ -43,9 +43,18 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Configure DVC
+        run: |
+          dvc remote modify dagshub auth basic
+          dvc remote modify dagshub user ${{ secrets.DAGSHUB_USER }}
+          dvc remote modify dagshub password ${{ secrets.DAGSHUB_TOKEN }}
+
+      - name: Pull Dataset
+        run: dvc pull
+
       - name: Run Model Training
         run: python src/training/train.py
-
+        
   evaluation:
     name: Stage 3 - Model Evaluation
     runs-on: ubuntu-latest
