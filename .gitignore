@@ -209,4 +209,4 @@ __marimo__/
 
 #data dan mlruns
 data/raw/
-mlruns/
+mlruns/Miniconda3-latest-Linux-x86_64.sh*
