@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import mlflow
@@ -38,6 +39,12 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 RMSE_THRESHOLD = 1.0
 
+CURRENT_MODEL_FILE = "best_rmse.txt"
+if os.path.exists(CURRENT_MODEL_FILE):
+    with open(CURRENT_MODEL_FILE, "r") as f:
+        current_rmse = float(f.read())
+else:
+    current_rmse = float("inf")
 
 def train_model(n_estimators, max_depth):
 
@@ -124,16 +131,23 @@ if __name__ == "__main__":
     print(f"Best Parameters: {best_params}")
 
     if best_rmse <= RMSE_THRESHOLD:
-
         print("✅ Model lolos validasi")
+        if best_rmse < current_rmse:
+            print("🚀 Model lebih baik dari versi sebelumnya")
+            
+            with mlflow.start_run(run_id=best_run_id):
+                mlflow.sklearn.log_model(
+                    best_model,
+                    "model",
+                    registered_model_name="movie-popularity-model"
+                )
+            with open(CURRENT_MODEL_FILE, "w") as f:
+                f.write(str(best_rmse))
 
-        # buka lagi run terbaik
-        with mlflow.start_run(run_id=best_run_id):
-
-            mlflow.sklearn.log_model(
-                best_model,
-                "model",
-                registered_model_name="movie-popularity-model"
+        else:
+            print(
+                "⚠️ Model baru tidak lebih baik, "
+                "promosi dibatalkan"
             )
 
     else:
