@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/37c4c547213149fd90c2dfccb2c5ec06/artifacts
+end_time: 1781026469412
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 37c4c547213149fd90c2dfccb2c5ec06
+run_name: RF_100_20
+run_uuid: 37c4c547213149fd90c2dfccb2c5ec06
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781026469276
+status: 3
+tags: []
+user_id: vscode

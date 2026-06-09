@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/6ac3315a7a0b402e92e15b1d0e2e6714/artifacts
+end_time: 1781024054164
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6ac3315a7a0b402e92e15b1d0e2e6714
+run_name: resilient-crow-552
+run_uuid: 6ac3315a7a0b402e92e15b1d0e2e6714
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781024053866
+status: 3
+tags: []
+user_id: vscode

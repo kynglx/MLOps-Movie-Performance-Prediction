@@ -8,7 +8,7 @@ services:
       mlflow server
       --host 0.0.0.0
       --port 5000
-      --backend-store-uri sqlite:///mlflow.db
+      --backend-store-uri file:/mlruns
       --default-artifact-root /mlruns
 
     ports:
@@ -16,17 +16,15 @@ services:
 
     volumes:
       - ./mlruns:/mlruns
-      - ./mlflow.db:/mlflow.db
 
     networks:
       - movie-network
 
   movie-app:
     build: .
-    container_name: movie-app
 
-    ports:
-      - "8000:8000"
+    expose:
+    - "8000"
 
     depends_on:
       - mlflow-server
@@ -37,14 +35,6 @@ services:
     networks:
       - movie-network
 
-  movie-model:
-    image: movie-model
-
-    depends_on:
-      - mlflow-server
-
-    networks:
-      - movie-network
 
   prometheus:
     image: prom/prometheus
@@ -54,7 +44,7 @@ services:
       - "9090:9090"
 
     volumes:
-      - ./monitoring/prometheus.yaml:/etc/prometheus/prometheus.yaml
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
 
     networks:
       - movie-network
@@ -65,6 +55,22 @@ services:
 
     ports:
       - "3000:3000"
+
+    networks:
+      - movie-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+
+    ports:
+      - "8000:80"
+
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+    depends_on:
+      - movie-app
 
     networks:
       - movie-network

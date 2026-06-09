@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/asus/OneDrive/Kuliah/Semester 6/MLOps/Project MLOps/MLOps-Movie-Performance-Prediction/mlruns/0/8c187e8cbf9a47968dfb1991e6933885/artifacts
+end_time: 1781021866938
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8c187e8cbf9a47968dfb1991e6933885
+run_name: capable-bear-302
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781021866451
+status: 3
+tags: []
+user_id: vscode
